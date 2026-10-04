@@ -31,6 +31,17 @@ Copy `play_cartpole_keyboard.py` into Isaac Lab's RSL-RL script directory:
 cp play_cartpole_keyboard.py /path/to/IsaacLab/scripts/reinforcement_learning/rsl_rl/
 ```
 
+## Remote streaming (optional)
+
+If Isaac Sim is running on a remote GPU server and you want to view the evaluation through livestreaming, set the following environment variables before launching evaluation:
+
+```bash
+export LIVESTREAM=1
+export PUBLIC_IP=86.127.31.205
+```
+
+`LIVESTREAM=1` enables livestreaming, and `PUBLIC_IP` should be set to the public IP address of the remote server. These variables are only needed for remote streaming and are not required for headless training or local GUI execution.
+
 ## Training and usage
 
 First train the Cartpole policy with Isaac Lab's original RSL-RL training script:
@@ -63,5 +74,3 @@ Use that checkpoint path with the keyboard demo:
 | `--checkpoint PATH` | — | Path to the trained RSL-RL checkpoint |
 
 Focus the Isaac Sim window and hold `A` or `D` during execution. This demo evaluates an existing checkpoint; it does not train a new policy.
-
-
