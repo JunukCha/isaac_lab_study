@@ -30,6 +30,17 @@
 cp play_cartpole_keyboard.py /path/to/IsaacLab/scripts/reinforcement_learning/rsl_rl/
 ```
 
+## 원격 스트리밍 설정 (선택)
+
+원격 GPU 서버에서 Isaac Sim을 실행하고 스트리밍으로 Evaluation 화면을 확인하려면, 실행 전에 다음 환경변수를 설정합니다.
+
+```bash
+export LIVESTREAM=1
+export PUBLIC_IP=86.127.31.205
+```
+
+`LIVESTREAM=1`은 Livestream 기능을 활성화하고, `PUBLIC_IP`에는 원격 서버의 Public IP를 지정합니다. 이 설정은 원격 스트리밍을 사용할 때만 필요하며, Headless 학습이나 로컬 GUI 실행에는 필요하지 않습니다.
+
 ## 학습 및 실행
 
 먼저 Isaac Lab의 기본 RSL-RL 학습 스크립트로 Cartpole 정책을 학습합니다.
@@ -62,4 +73,3 @@ logs/rsl_rl/cartpole/2026-10-04_03-45-58/model_149.pt
 | `--checkpoint PATH` | 학습된 RSL-RL 체크포인트 경로 |
 
 실행 중 Isaac Sim 창에 포커스를 두고 `A` 또는 `D`를 누르세요. 이 데모는 기존 체크포인트를 평가하며 새 정책을 학습하지 않습니다.
-
