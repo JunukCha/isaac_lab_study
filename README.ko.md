@@ -36,10 +36,13 @@ cp play_cartpole_keyboard.py /path/to/IsaacLab/scripts/reinforcement_learning/rs
 
 ```bash
 export LIVESTREAM=1
-export PUBLIC_IP=86.127.31.205
+export PUBLIC_IP="${PUBLIC_IPADDR:-$(curl -fsS https://api.ipify.org)}"
+echo "PUBLIC_IP=${PUBLIC_IP}"
 ```
 
-`LIVESTREAM=1`은 Livestream 기능을 활성화하고, `PUBLIC_IP`에는 원격 서버의 Public IP를 지정합니다. 이 설정은 원격 스트리밍을 사용할 때만 필요하며, Headless 학습이나 로컬 GUI 실행에는 필요하지 않습니다.
+서버별 Public IP를 하드코딩하지 않도록 구성한 방식입니다. Vast.ai에서는 `PUBLIC_IPADDR` 환경변수가 있으면 자동으로 사용하고, 일반 원격 Linux 서버에서는 `curl`을 이용해 현재 서버의 Public IP를 자동으로 조회합니다.
+
+`LIVESTREAM=1`은 Livestream 기능을 활성화합니다. 이 설정은 원격 스트리밍을 사용할 때만 필요하며, Headless 학습이나 로컬 GUI 실행에는 필요하지 않습니다.
 
 ## 학습 및 실행
 
