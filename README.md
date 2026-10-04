@@ -37,10 +37,13 @@ If Isaac Sim is running on a remote GPU server and you want to view the evaluati
 
 ```bash
 export LIVESTREAM=1
-export PUBLIC_IP=86.127.31.205
+export PUBLIC_IP="${PUBLIC_IPADDR:-$(curl -fsS https://api.ipify.org)}"
+echo "PUBLIC_IP=${PUBLIC_IP}"
 ```
 
-`LIVESTREAM=1` enables livestreaming, and `PUBLIC_IP` should be set to the public IP address of the remote server. These variables are only needed for remote streaming and are not required for headless training or local GUI execution.
+This avoids hardcoding a server-specific IP address. On Vast.ai, `PUBLIC_IPADDR` is used automatically when available. On other remote Linux servers, the command falls back to querying the machine's public IP with `curl`.
+
+`LIVESTREAM=1` enables livestreaming. These variables are only needed for remote streaming and are not required for headless training or local GUI execution.
 
 ## Training and usage
 
